@@ -20,14 +20,36 @@ class PaymentTableSeeder extends Seeder
         $options['init'] = "Modules\Icommercefreeshipping\Http\Controllers\Api\IcommerceFreeshippingApiController";
         $options['minimum'] = "";
         
-        $params = array(
-            'title' => trans('icommercefreeshipping::icommercefreeshippings.single'),
-            'description' => trans('icommercefreeshipping::icommercefreeshippings.description'),
-            'name' => config('asgard.icommercefreeshipping.config.shippingName'),
-            'status' => 0,
-            'options' => $options
-        );
+        $titleTrans = 'icommercefreeshipping::icommercefreeshippings.single';
+        $descriptionTrans = 'icommercefreeshipping::icommercefreeshippings.description';
 
-        ShippingMethod::create($params);
+        foreach (['en', 'es'] as $locale) {
+
+            if($locale=='en'){
+                $params = array(
+                    'title' => trans($titleTrans),
+                    'description' => trans($descriptionTrans),
+                    'name' => config('asgard.icommercefreeshipping.config.shippingName'),
+                    'status' => 0,
+                    'options' => $options
+                );
+
+                $shippingMethod = ShippingMethod::create($params);
+                
+            }else{
+
+                $title = trans($titleTrans,[],$locale);
+                $description = trans($descriptionTrans,[],$locale);
+
+                $shippingMethod->translateOrNew($locale)->title = $title;
+                $shippingMethod->translateOrNew($locale)->description = $description;
+
+                $shippingMethod->save();
+
+            }
+        }// Foreach
+            
+
+       
     }
 }

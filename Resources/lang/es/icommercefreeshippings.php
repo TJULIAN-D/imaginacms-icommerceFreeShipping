@@ -16,15 +16,15 @@ return [
         'create icommercefreeshipping' => 'Create a icommercefreeshipping',
     ],
     'table' => [
-        'minimum' => 'Minimum total of the order (Products without Freeshipping)',
+        'minimum' => 'Total minimo de la Orden (Productos sin freeshipping)',
     ],
     'form' => [
     ],
     'messages' => [
-        'msjini' => 'Debes ingresar el pais',
-        'withoutfree' => 'No se ha asignado pais para freeshipping',
-        'notavailable' => 'No disponible para ese destino',
-        'totalmininum' => 'El total minimo de la orden (productos sin freeshipping) debe ser:' 
+        'msjini' => 'Debes ingresar un pais',
+        'withoutfree' => 'El pais no ha sido asignado para freeshipping',
+        'notavailable' => 'No disponible para el pais destino',
+        'totalmininum' => 'El total minimo de la orden(Productos sin freeshipping) debe ser:'
     ],
     'validation' => [
     ],

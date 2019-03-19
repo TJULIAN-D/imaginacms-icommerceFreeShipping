@@ -16,6 +16,6 @@ class IcommercefreeshippingDatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(PaymentTableSeeder::class);
-        $this->call(GeozoneTableSeeder::class);
+        //$this->call(GeozoneTableSeeder::class);
     }
 }
