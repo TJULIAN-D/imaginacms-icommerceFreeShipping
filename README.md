@@ -11,10 +11,10 @@
 ## API
     
     ### Parameters
-        * @param Request (products,options)
+        * @param Request (products)
         * @param Request array "products" - items (object) 
         * @param Request array "products" - total (float)
-        * @param Request array "options" - countryCode (string)
+        * @param Requests string "shipping_country_code"
         
 
     ### Example

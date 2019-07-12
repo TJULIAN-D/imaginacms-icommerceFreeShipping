@@ -10,7 +10,7 @@ class EloquentIcommerceFreeshippingRepository extends EloquentBaseRepository imp
 
     function calculate($parameters,$conf){
         
-        $countryCode = isset($parameters["options"]["countryCode"]) ? $parameters["options"]["countryCode"] : null;
+        $countryCode = isset($parameters["shipping_country_code"]) ? $parameters["shipping_country_code"] : null;
 
         if($countryCode!=null){
 
