@@ -3,7 +3,7 @@
     "alias": "icommercefreeshipping",
     "description": "Freeshipping - ShippingMethod Module to Icommerce",
     "keywords": [],
-    "version": "1.0.2",
+    "version": "1.0.3",
 	"active": 1,
     "order": 1,
     "providers": [
