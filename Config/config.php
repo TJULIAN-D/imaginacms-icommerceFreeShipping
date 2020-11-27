@@ -2,5 +2,13 @@
 
 return [
     'name' => 'Icommercefreeshipping',
-    'shippingName' => 'icommercefreeshipping'
+    'shippingName' => 'icommercefreeshipping',
+
+    /**
+	*	Calcule Types
+	*	- minimumTotalOrder
+	*	- minimumTotalNotFreeshipping
+    */
+    'calculeType' => 'minimumTotalOrder',
+ 
 ];

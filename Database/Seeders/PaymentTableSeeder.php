@@ -24,7 +24,7 @@ class PaymentTableSeeder extends Seeder
         if(!$result){
 
             $options['init'] = "Modules\Icommercefreeshipping\Http\Controllers\Api\IcommerceFreeshippingApiController";
-            $options['minimum'] = "";
+            $options['minimum'] = 0;
             
             $titleTrans = 'icommercefreeshipping::icommercefreeshippings.single';
             $descriptionTrans = 'icommercefreeshipping::icommercefreeshippings.description';

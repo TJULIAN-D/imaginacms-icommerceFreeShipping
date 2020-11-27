@@ -8,73 +8,75 @@ use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 class EloquentIcommerceFreeshippingRepository extends EloquentBaseRepository implements IcommerceFreeshippingRepository
 {
 
+
+    /**
+     * Calculate Method
+     * @param Parameters (cart_id,products) - products(array)[items,total]
+     * @param Conf - Method configurations
+     * @return
+     */
     function calculate($parameters,$conf){
         
-        $countryCode = isset($parameters["shipping_country_code"]) ? $parameters["shipping_country_code"] : null;
+       
+        $items = json_decode($parameters['products']['items']);
+        $totalOrder = $parameters['products']['total'];
 
-        if($countryCode!=null){
 
-            $geozoneFreeID = setting('icommercefreeshipping::geozone');
-            // Ojo Metodo del Icommerce para q revise las geozonas (Juan)
-            // $countryCode 
-            //$geozoneExistFree = metodo($parameters["options"])
-            $geozoneExistFree = true;
+        $calculationType = config("asgard.icommercefreeshipping.config.calculeType");
 
-            if($geozoneExistFree){
 
-                $items = json_decode($parameters["products"]["items"]);
-                //$items = $parameters["products"]["items"];
-
-                return $this->getResult($items,$conf);
-
+        // Type Minimum Total from Order
+        if($calculationType=="minimumTotalOrder"){
+            if($totalOrder>=$conf->minimum){
+                $response["msj"] = "success";
+                $response["items"] = null;
+                $response["price"] = 0;
+                $response["priceshow"] = false;
             }else{
-
-                return [
+                $response = [
                     'status' => 'error',
-                 'msj' => trans('icommercefreeshipping::icommercefreeshippings.messages.withoutfree')
+                    'msj' => trans('icommercefreeshipping::icommercefreeshippings.messages.totalmininum')." ".formatMoney($conf->minimum)
                 ];
             }
 
-
-        }else{
-            return [
-                'status' => 'error',
-                'msj' => trans('icommercefreeshipping::icommercefreeshippings.messages.notavailable')
-            ]; 
+            return $response;
         }
        
-    }
+        // If the product does not have freeshipping,
+        // the total is sum to validate it with the minimum
+        if($calculationType=="minimumTotalNotFreeshipping"){
+            $totalCar = 0;
 
+            foreach ($items as $item) {
+                if ($item->freeshipping == 0) {
+                    $totalCar = $totalCar + ($item->price * $item->quantity);
+                }
+            }
+
+            if($totalCar>=$conf->minimum){
+
+                $response["msj"] = "success";
+                $response["items"] = null;
+                $response["price"] = 0;
+                $response["priceshow"] = false;
+
+            }else{
+
+                $response = [
+                    'status' => 'error',
+                    'msj' => trans('icommercefreeshipping::icommercefreeshippings.messages.totalmininum')." ".formatMoney($conf->minimum)
+                ];
+            
+            }
+
+            return $response;
+        }
+        
+    }
 
 
     function getResult($items,$conf){
 
-        $totalCar = 0;
-		
-		foreach ($items as $key => $item) {
-			// Without FreeShipping
-			if ($item->freeshipping == 0) {
-                $totalCar = $totalCar + ($item->price * $item->quantity);
-			}
-		}
-
-		if($totalCar>=$conf->minimum){
-
-            $response["msj"] = "success";
-            $response["items"] = null;
-			$response["price"] = 0;
-        	$response["priceshow"] = false;
-
-	    	return $response;
-
-		}else{
-
-			 return [
-           		'status' => 'error',
-            	'msj' => trans('icommercefreeshipping::icommercefreeshippings.messages.totalmininum')." ".$conf->minimum
-            ];
-            
-		}
     }
 
 }
