@@ -1,4 +1,4 @@
-# asgardcms-icommercefreeshipping
+# imaginacms-icommercefreeshipping (ShippingMethod)
 
 ## Seeder
 
