@@ -7,6 +7,7 @@ use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Icommercefreeshipping\Events\Handlers\RegisterIcommercefreeshippingSidebar;
+use Illuminate\Support\Arr;
 
 class IcommercefreeshippingServiceProvider extends ServiceProvider
 {
