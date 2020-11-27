@@ -29,7 +29,7 @@ class IcommercefreeshippingServiceProvider extends ServiceProvider
         $this->app['events']->listen(BuildingSidebar::class, RegisterIcommercefreeshippingSidebar::class);
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('icommercefreeshippings', array_dot(trans('icommercefreeshipping::icommercefreeshippings')));
+            $event->load('icommercefreeshippings', Arr::dot(trans('icommercefreeshipping::icommercefreeshippings')));
             // append translations
 
         });
