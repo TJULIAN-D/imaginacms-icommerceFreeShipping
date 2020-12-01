@@ -8,7 +8,5 @@ interface IcommerceFreeshippingRepository extends BaseRepository
 {
 
     public function calculate($parameters,$conf);
-
-    public function getResult($items,$conf);
     
 }

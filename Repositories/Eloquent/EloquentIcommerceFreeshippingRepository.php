@@ -74,9 +74,4 @@ class EloquentIcommerceFreeshippingRepository extends EloquentBaseRepository imp
         
     }
 
-
-    function getResult($items,$conf){
-
-    }
-
 }

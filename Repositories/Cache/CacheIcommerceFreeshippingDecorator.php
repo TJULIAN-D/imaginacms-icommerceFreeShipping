@@ -25,12 +25,5 @@ class CacheIcommerceFreeshippingDecorator extends BaseCacheDecorator implements 
             return $this->repository->calculate($parameters,$conf);
         });
     }
-
-    public function getResult($items,$conf)
-    {
-        return $this->remember(function () use ($items,$conf) {
-            return $this->repository->getResult($items,$conf);
-        });
-    }
     
 }
