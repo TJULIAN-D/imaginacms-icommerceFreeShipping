@@ -41,7 +41,7 @@ class IcommercefreeshippingServiceProvider extends ServiceProvider
         $this->publishConfig('icommercefreeshipping', 'permissions');
         $this->publishConfig('icommercefreeshipping', 'config');
 
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
