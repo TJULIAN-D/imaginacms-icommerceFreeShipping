@@ -4,6 +4,7 @@ namespace Modules\Icommercefreeshipping\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Icommercefreeshiping\Database\Seeders\IcommercefreeshipingModuleTableSeeder;
 
 
 class IcommercefreeshippingDatabaseSeeder extends Seeder
@@ -16,6 +17,7 @@ class IcommercefreeshippingDatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(PaymentTableSeeder::class);
+        $this->call(IcommercefreeshipingModuleTableSeeder::class);
         //$this->call(GeozoneTableSeeder::class);
     }
 }
