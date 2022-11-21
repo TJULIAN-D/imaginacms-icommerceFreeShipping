@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Icommercefreeshiping\Database\Seeders;
+namespace Modules\Icommercefreeshipping\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class IcommercefreeshipingModuleTableSeeder extends Seeder
+class IcommercefreeshippingModuleTableSeeder extends Seeder
 {
   /**
    * Run the database seeds.
@@ -25,6 +25,6 @@ class IcommercefreeshipingModuleTableSeeder extends Seeder
   
     $moduleRegisterService = app("Modules\Isite\Services\RegisterModuleService");
   
-    $moduleRegisterService->registerModule("icommercefreeshiping", $columns, 1);
+    $moduleRegisterService->registerModule("icommercefreeshipping", $columns, 1);
   }
 }
